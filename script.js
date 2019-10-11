@@ -3,6 +3,7 @@
 function getInput(){
     $(".git-form").on("submit",(e)=>{
         e.preventDefault();
+        
         let searchInput = $("#search-repo").val();
         getRepos(searchInput);
     })
@@ -22,10 +23,11 @@ function renderRepos(responseJSON,searchInput) {
 let repoURL = 
 `https://www.github.com/${searchInput}/`
 console.log(repoURL);
+$(".repo-list").html("");
 responseJSON.forEach((repo)=>{
      $(".repo-list").append(
-         `<ul>Repo Name:${repo.name}</ul>
-         <ul>Url:<a href='${repoURL}${repo.name}'>Link</a></ul>
+         `<li>Github Repo Name:${repo.name}</li>
+         <li>Repo Url:<a href='${repoURL}${repo.name}'>Link</a></li>
          <br><br>`)
  })
 }
